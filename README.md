@@ -37,6 +37,7 @@ $ az ad sp create-for-rbac --skip-assignment
 3. Configure the appId and password from above in the terraform.tfvars
 
 Launch the cluster:
+`terraform init` - If you are running terraform for the first time
 `terraform apply`
 
 Destroy the cluster:
