@@ -23,15 +23,16 @@ Login to Azure:
 
 Configure the variables wth the credentials:
 1. Run the command `az ad sp create-for-rbac --skip-assignment`
-2. 
-```$ az ad sp create-for-rbac --skip-assignment
+```
+$ az ad sp create-for-rbac --skip-assignment
 {
   "appId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
   "displayName": "azure-cli-2019-04-11-00-46-05",
   "name": "http://azure-cli-2019-04-11-00-46-05",
   "password": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
   "tenant": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
-}```
+}
+```
 
 3. Configure the appId and password from above in the terraform.tfvars
 
