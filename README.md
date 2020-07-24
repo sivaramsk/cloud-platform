@@ -14,7 +14,7 @@ git clone https://github.com/sivaramkannan/azure-aks.git
 
 Configure terraform:
   The default number of nodes that will be installed is 3 worker nodes with 4vCPUS and 16G RAM. Refer this page for configuring different machine type - https://azure.microsoft.com/en-in/pricing/details/virtual-machines/linux/. You can change the configuration in the file aks-cluster.tf under agent_pool_profile.count. 
-  You can also change the configuration for the file store size in file-store.tf where the quota is set to 50G
+  You can also change the configuration for the file store size in file-store.tf where the quota is set to 50G. You may have to modify the name of the storageaccount and the sharename if already using the default one. 
   
 Login to Azure:
 1. Login to azure in your browser.
@@ -39,6 +39,9 @@ $ az ad sp create-for-rbac --skip-assignment
 Launch the cluster:
 * `terraform init` - If you are running terraform for the first time
 * `terraform apply`
+
+Add access details to kubectl: (use the output of terraform apply command to fill resource-group-name and cluster-name)
+az aks get-credentials --resource-group <resource-group-name> --name <cluster-name>
 
 Destroy the cluster:
 * `terraform destroy`
