@@ -41,7 +41,7 @@ Launch the cluster:
 * `terraform apply`
 
 Add access details to kubectl: (use the output of terraform apply command to fill resource-group-name and cluster-name)
-az aks get-credentials --resource-group <resource-group-name> --name <cluster-name>
+* az aks get-credentials --resource-group <resource-group-name> --name <cluster-name>
 
 Destroy the cluster:
 * `terraform destroy`
