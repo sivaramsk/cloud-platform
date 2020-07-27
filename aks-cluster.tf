@@ -27,8 +27,8 @@ resource "azurerm_kubernetes_cluster" "default" {
 
   agent_pool_profile {
     name            = "default"
-    count           = 3
-    vm_size         = "Standard_A4_v2"
+    count           = 1
+    vm_size         = "Standard_D2s_v3"
     os_type         = "Linux"
     os_disk_size_gb = 100
   }
@@ -53,4 +53,8 @@ output "resource_group_name" {
 
 output "kubernetes_cluster_name" {
   value = azurerm_kubernetes_cluster.default.name
+}
+
+output "kube_config" {
+  value = azurerm_kubernetes_cluster.default.kube_config_raw
 }
