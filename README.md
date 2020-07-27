@@ -40,8 +40,9 @@ Launch the cluster:
 * `terraform init` - If you are running terraform for the first time
 * `terraform apply`
 
-Add access details to kubectl: (use the output of terraform apply command to fill resource-group-name and cluster-name)
-* az aks get-credentials --resource-group bold-wombat-rg --name bold-wombat-aks
+Add access details to kubectl: (don't overwrite the default set in ~/.kube/config)
+* echo "$(terraform output kube_config)" > ~/.kube/azurek8s
+* export KUBECONFIG="~/.kube/azurek8s"
 
 Destroy the cluster:
 * `terraform destroy`
