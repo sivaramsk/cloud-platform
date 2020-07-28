@@ -1,36 +1,20 @@
-resource "random_pet" "prefix" {}
-
-variable "appId" {
-}
-
-variable "password" {
-}
 
 provider "azurerm" {
-  version = "~> 1.27.0"
-}
+  version = "~> 2.20.0"
 
-resource "azurerm_resource_group" "default" {
-  name     = "${random_pet.prefix.id}-rg"
-  location = "West US 2"
-
-  tags = {
-    environment = "Demo"
-  }
+  features {}
 }
 
 resource "azurerm_kubernetes_cluster" "default" {
-  name                = "${random_pet.prefix.id}-aks"
-  location            = azurerm_resource_group.default.location
-  resource_group_name = azurerm_resource_group.default.name
-  dns_prefix          = "${random_pet.prefix.id}-k8s"
+  name                = var.cluster_name
+  location            = var.location
+  resource_group_name = "intain-dev-rg"
+  dns_prefix          = var.cluster_name
 
-  agent_pool_profile {
+  default_node_pool {
     name            = "default"
-    count           = 1
-    vm_size         = "Standard_D2s_v3"
-    os_type         = "Linux"
-    os_disk_size_gb = 100
+    node_count           = 1
+    vm_size         = "Standard_D4a_v4"
   }
 
   service_principal {
@@ -47,12 +31,8 @@ resource "azurerm_kubernetes_cluster" "default" {
   }
 }
 
-output "resource_group_name" {
-  value = azurerm_resource_group.default.name
-}
-
 output "kubernetes_cluster_name" {
-  value = azurerm_kubernetes_cluster.default.name
+  value = var.cluster_name
 }
 
 output "kube_config" {
