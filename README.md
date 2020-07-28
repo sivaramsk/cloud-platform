@@ -41,8 +41,8 @@ Launch the cluster:
 * `terraform apply`
 
 Add access details to kubectl: (don't overwrite the default set in ~/.kube/config)
-* echo "$(terraform output kube_config)" > ~/.kube/azurek8s
-* export KUBECONFIG="~/.kube/azurek8s"
+* echo "$(terraform output kube_config)" > $HOME/.kube/azurek8s
+* export KUBECONFIG="$HOME/.kube/azurek8s"
 
 Destroy the cluster:
 * `terraform destroy`
