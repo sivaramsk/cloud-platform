@@ -1,0 +1,16 @@
+# Loki Stack Values
+prometheus:
+  enabled: true
+  alertmanager:
+    persistentVolume:
+      enabled: false
+  server:
+    persistentVolume:
+      enabled: true
+      storageClass: azurefile
+      size: 10Gi
+loki:
+  persistence:
+    enabled: true
+    storageClass: azurefile
+    size: 10Gi
