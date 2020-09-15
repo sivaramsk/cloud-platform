@@ -1,0 +1,24 @@
+grafana:
+  enabled: true
+  grafana.ini:
+    smtp:
+       enabled: true
+       host: smtp.gmail.com:587
+       user: "user@gmail.com"
+       password: "password for the above email address"
+       skip_verify: true
+
+prometheus:
+  storageSpec: 
+    apiVersion: monitoring.coreos.com/v1
+    kind: Prometheus
+    metadata:
+      name: persisted
+    spec:
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: azurefile
+            resources:
+              requests:
+                storage: 10Gi
