@@ -4,8 +4,8 @@ grafana:
     smtp:
        enabled: true
        host: smtp.gmail.com:587
-       user: "demo_emulya@intainft.com"
-       password: "welcome@12"
+       user: "user@gmail.com"
+       password: "password for the above mail"
        skip_verify: true
 
 prometheus:
