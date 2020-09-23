@@ -2,11 +2,8 @@ Amazon-EKS
 
 Prerequisites:
 
-    AWS IAM users for terraform 
+    AWS IAM users for terraform and a group with the rights "AdministratorAccess" and "AmazonEKSClusterPolicy"
     Terraform 0.12 (https://www.terraform.io/downloads.html)
-    aws ()
-
-This would launch an AKS cluster along with 50G of filestore.
 
 Deployment:
 
