@@ -7,7 +7,7 @@ create_dir() {
 
 declare -a ignore_namespaces
 
-ignore_namespaces=("kube-system" "kube-node-lease" "kube-public" "velero" "monitoring" "ingress-controller" "minio")
+ignore_namespaces=("kube-system" "kube-node-lease" "kube-public" "velero" "monitoring" "ingress-controller" "minio" "default")
 
 ignore_ns_length=${#ignore_namespaces[@]}
 
@@ -43,33 +43,38 @@ get_all_ns() {
   ns_array=($(kubectl get namespaces | awk '{print $1}'))
   ns_array_length=${#ns_array[@]}
   for (( i=1; i<${ns_array_length}; i++ ))
-        do  
-          str=${ns_array[i]} 
+        do
+          str=${ns_array[i]}
           if [[ " ${ignore_namespaces[*]} " == *" $str "* ]]; then
               echo "Skipping the logs collection for the pods in $str namespace"
           else
               echo "Collecting the logs of the pods in $str namespace"
-              collect_pod_logs $str 
+              collect_pod_logs $str
           fi
         done
 }
 
-word="current-context"
+path=$HOME/.kube
 
-filename="$HOME/.kube/config"
+FILE=$HOME/.kube/config
 
-declare -a currentcontext
-
-currentcontext=($(grep "$word" "$filename"))
-
-cluster_name=${currentcontext[1]}
-
-echo "Cluster name: $cluster_name "
-
-create_dir $cluster_name
-
-cd $cluster_name
-
-get_all_ns 
-
-tar -zcvf $cluster_name_logs.tar.gz $cluster_name
+if test -f "$FILE"; then
+    word="current-context"
+    filename="$HOME/.kube/config"
+    declare -a currentcontext
+    currentcontext=($(grep "$word" "$filename"))
+    cluster_name=${currentcontext[1]}
+    echo "Cluster name: $cluster_name "
+    cd /tmp
+    create_dir $cluster_name
+    cd $cluster_name
+    get_all_ns
+    cd /tmp
+    tar czvpf $HOME/$cluster_name.tgz $cluster_name
+    zip_file_path=$HOME/$cluster_name.tgz
+    echo "Please collect the zip file containing the logs under the path $zip_file_path"
+else
+    echo "KUBECONFIG is not set. The $FILE is missing in the $path"
+    echo "----------------exiting----------------"
+    exit
+fi
