@@ -1,27 +1,41 @@
-variable "appId" {
-	description = "AppID for credentials"
-}
-
-variable "password" {
-	description = "password for credentials"
-}
-
-variable "cluster_name" {
-	description = "As the name says name of the cluster."
+variable "resource_group" {
+  description = "Resource groups for the fileshare and the blobstore"
 }
 
 variable "location" {
-	description = "Region of the cluster."
+  description = "Azure location for the fileshare and the blob store."
 }
 
-variable "resource_group" {
-	description = "Name of the resource group underwhich the cluster and the other resources should be created."
+variable "storage_account_name" {
+  description = "Storage account name for the above fileshare and the blobstore."
 }
 
-variable "storage_account" {
-	description = "Name of the storage account."
+
+variable "blobstore_name" {
+  description = "Name of the blobstore"
 }
 
-variable "file_share_name" {
-	description = "Name of the file share."
+
+variable "cluster_name" {
+  description = "AKS Cluster name"
+}
+
+variable "cluster_nodepool_name" {
+  description = "AKS cluster node pool"
+}
+
+variable "cluster_nodepool_size" {
+  description = "Node pool size"
+}
+
+variable "cluster_vmsize" {
+  description = "Worker node vmsize"
+}
+
+variable "prefix" {
+  description = "prefix"
+}
+
+variable "vault_vmsize" {
+  description = "Size of vault VM"
 }
