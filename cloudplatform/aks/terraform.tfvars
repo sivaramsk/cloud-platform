@@ -1,19 +1,19 @@
 # Resource Group
-resource_group = "<resource_group_name>"
-location = "<resource_region>"
+resource_group = "umb-rg"
+location = "West Europe"
 
 # Storage Account Name" 
-storage_account_name = "<storage_account_name>"
+storage_account_name = "umbsa"
 
 # Blobstore configuration
-blobstore_name = "<backup_blob_container_name>"
+blobstore_name = "umb-blobstore"
 
 # Azure AKS configuration
-cluster_name = "<aks_cluster_name>"
-cluster_nodepool_name = "<aks_nodepool_name>"
-cluster_vmsize = "<aks_workernode_machine_type>"
-cluster_nodepool_size = <number_of_worker_nodes>
+cluster_name = "umb-staging"
+cluster_nodepool_name = "default"
+cluster_vmsize = "Standard_D11_v2"
+cluster_nodepool_size = 5
 
 #Vault VM Configuration
-prefix = "<vault_vm_prefix>"
-vault_vmsize = "<vault_vm_machine_type>"
+prefix = "umb-staging"
+vault_vmsize = "Standard_DS1_v2"
