@@ -32,6 +32,14 @@ variable "cluster_vmsize" {
   description = "Worker node vmsize"
 }
 
+variable "subscription_id" {
+  description = "Subscription id"
+}
+
+variable "tenant_id" {
+  description = "Tenant id"
+}
+
 variable "prefix" {
   description = "prefix"
 }
@@ -39,3 +47,4 @@ variable "prefix" {
 variable "vault_vmsize" {
   description = "Size of vault VM"
 }
+

@@ -1,6 +1,13 @@
-provider "azurerm" {
-  version = "~> 2.31.1"
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "2.31.1"
+    }
+  }
+}
 
+provider "azurerm" {
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
 
@@ -9,10 +16,10 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name  = var.resource_group
-    storage_account_name = var.storage_account
-    container_name       = "bankema-staging-statestore"
-    key                  = "bankema-staging"
+    resource_group_name  = "umb-rg"
+    storage_account_name = "umbsa"
+    container_name       = "umb-staging-blobstore"
+    key                  = "umb-staging"
   }
 }
 
@@ -47,7 +54,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   tags = {
-    environment = "<some-tag-name>"
+    environment = "umb-staging"
   }
 }
 
