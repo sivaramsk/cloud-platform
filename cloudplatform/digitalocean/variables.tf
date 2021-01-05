@@ -58,3 +58,27 @@ variable "do_k8s_nodepool_name" {
   default     = "k8s-nodepool"
 }
 
+
+variable "do_vault_image_name" {
+  description = ""
+  type = string
+  default = "docker-20-04"
+}
+
+variable "do_vault_vm_name" {
+  description = "Name of the vault vm for this instance."
+  type = string
+  default = ""
+}
+
+variable "do_vault_vm_size" {
+  description = "Type of the vm machine for this vm."
+  type = string
+  default = "s-1vcpu=1gb"
+}
+
+variable "do_ssh_key_name" {
+  description = "Name of the public ssh key to add to the VM created."
+  type = string
+  default = ""
+}
