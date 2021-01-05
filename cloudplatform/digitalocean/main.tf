@@ -14,9 +14,9 @@ provider "digitalocean" {
 
 terraform {
   backend "s3" {
-    endpoint                    = "https://sfo2.digitaloceanspaces.com"
+    endpoint                    = "<do_spaces_endpoint>"
     key                         = "terraform.tfstate"
-    bucket                      = "tfstatetest"
+    bucket                      = "<do_spaces_bucket_name>"
     region                      = "us-east-1"
     skip_region_validation      = true
     skip_credentials_validation = true
