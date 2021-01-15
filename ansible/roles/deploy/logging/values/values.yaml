@@ -1,0 +1,12 @@
+# Loki Stack Values
+loki:
+  persistence:
+    enabled: true
+    storageClassName: "do-block-storage"
+    size: 10Gi
+
+grafana:
+  enabled: false
+
+prometheus:
+  enabled: false

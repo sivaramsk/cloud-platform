@@ -1,0 +1,13 @@
+
+# From repository
+- name: Add stable chart repo
+  community.kubernetes.helm_repository:
+    name: grafana
+    repo_url: https://grafana.github.io/helm-charts
+
+- name: Deploy latest version of Loki chart inside monitoring namespace
+  community.kubernetes.helm:
+    name: loki
+    chart_ref: grafana/loki-stack
+    release_namespace: monitoring
+    values: "{{ lookup('template', '../values/main.yaml') | from_yaml }}"

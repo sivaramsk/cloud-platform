@@ -1,0 +1,12 @@
+# Loki Stack Values
+loki:
+  persistence:
+    enabled: true
+    storageClassName: "{{ storageclass_name }}"
+    size: "{{ loki_storagesize }}"
+
+grafana:
+  enabled: false
+
+prometheus:
+  enabled: false
