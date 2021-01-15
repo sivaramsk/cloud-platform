@@ -5,7 +5,7 @@
     name: jetstack
     repo_url: https://charts.jetstack.io
 
-- name: Deploy latest version of Loki chart inside monitoring namespace
+- name: Deploy latest version of Cert-Manager chart inside monitoring namespace
   community.kubernetes.helm:
     name: cert-manager
     chart_ref: jetstack/cert-manager
@@ -13,4 +13,20 @@
     create_namespace: true
     values:
       version: "v1.1.0"
-      set: "installCRDs=true"
+      installCRDs: true
+    wait: true
+
+- name: Pause for 10 seconds for all the cert-manager components to come to a stable state
+  pause:
+    seconds: 10
+
+- name: Deploy Staging ClusterIssuer for the cert-manager
+  community.kubernetes.k8s:
+    state: present
+    definition: "{{ lookup('file', '../config/letsencrypt-staging.yaml') | from_yaml }}"
+
+
+- name: Deploy Prod ClusterIssuer for the cert-manager
+  community.kubernetes.k8s:
+    state: present
+    definition: "{{ lookup('file', '../config/letsencrypt-prod.yaml') | from_yaml }}"
