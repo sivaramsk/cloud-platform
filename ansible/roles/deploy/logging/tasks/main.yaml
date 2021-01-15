@@ -10,4 +10,4 @@
     name: loki
     chart_ref: grafana/loki-stack
     release_namespace: monitoring
-    values: "{{ lookup('template', '../values/main.yaml') | from_yaml }}"
+    values: "{{ lookup('template', '../config/main.yaml') | from_yaml }}"
