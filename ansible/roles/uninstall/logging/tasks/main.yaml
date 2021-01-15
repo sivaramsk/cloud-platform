@@ -1,4 +1,4 @@
-- name: Remove test release and waiting suppression ending
+- name: Remove loki deployment using helm
   community.kubernetes.helm:
     name: loki
     release_namespace: monitoring

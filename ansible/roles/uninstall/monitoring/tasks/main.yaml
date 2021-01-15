@@ -1,4 +1,4 @@
-- name: Remove test release and waiting suppression ending
+- name: Remove prometheus-operator using helm
   community.kubernetes.helm:
     name: prometheus-operator
     release_namespace: monitoring
