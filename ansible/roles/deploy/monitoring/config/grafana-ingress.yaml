@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus-grafana
+  namespace: monitoring
+  annotations:
+    certmanager.k8s.io/acme-challenge-type: http01
+    kubernetes.io/ingress.class: "haproxy"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+
+spec:
+  tls:
+  - hosts:
+    - "{{ ingress_host_name }}"
+    secretName: monitoring-tls
+  rules:
+  - host: "{{ ingress_host_name }}"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: prometheus-operator-grafana
+          servicePort: 80
