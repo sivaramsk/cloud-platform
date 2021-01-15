@@ -1,2 +1,0 @@
-[k8s]
-server01 ansible_host=localhost

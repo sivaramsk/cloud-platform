@@ -1,7 +1,0 @@
----
-- hosts: k8s
-  become: yes
-
-  roles:
-    - common
-    - backup
