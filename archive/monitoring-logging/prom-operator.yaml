@@ -14,7 +14,7 @@ prometheus:
     storageSpec: 
       volumeClaimTemplate:
         spec:
-          storageClassName: azurefile
+          storageClassName: default
           resources:
             requests:
               storage: 10Gi

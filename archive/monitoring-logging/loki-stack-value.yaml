@@ -2,7 +2,7 @@
 loki:
   persistence:
     enabled: true
-    storageClass: azurefile
+    storageClass: default
     size: 10Gi
 
 grafana:
