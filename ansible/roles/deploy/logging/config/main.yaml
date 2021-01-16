@@ -2,8 +2,8 @@
 loki:
   persistence:
     enabled: true
-    storageClassName: "{{ storageclass_name }}"
-    size: "{{ loki_storagesize }}"
+    storageClassName: "{{ loki.storageclass_name }}"
+    size: "{{ loki.storagesize }}"
 
 grafana:
   enabled: false

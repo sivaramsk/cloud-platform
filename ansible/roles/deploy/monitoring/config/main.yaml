@@ -4,9 +4,9 @@ grafana:
     smtp:
        enabled: true
        #host: smtp.gmail.com:587
-       host: "{{ smtp_endpoint }}"
-       user: "{{ smtp_email }}"
-       password: "{{ smtp_email_password }} "
+       host: "{{ monitoring.smtp_endpoint }}"
+       user: "{{ monitoring.smtp_email }}"
+       password: "{{ monitoring.smtp_email_password }} "
        skip_verify: true
 
 prometheus:
@@ -15,7 +15,7 @@ prometheus:
     storageSpec: 
       volumeClaimTemplate:
         spec:
-          storageClassName: "{{ storageclass_name }}"
+          storageClassName: "{{ monitoring.storageclass_name }}"
           resources:
             requests:
-              storage: "{{ prom_operator_storagesize }}"
+              storage: "{{ monitoring.storagesize }}"
