@@ -1,35 +1,7 @@
 ---
 - hosts: localhost
   gather_facts: no
-  tasks:
-
-  # Create Namespaces and install prometheus operator
-    - name: Deploy prometheus operator
-      include_role:
-        name: ../roles/deploy/monitoring
-      vars:
-        smtp_endpoint: "test.smtp.gmail.com"
-        smtp_email: "test@gmail.com"
-        smtp_email_password: "2Password#123"
-        storageclass_name: "do-block-storage"
-        prom_operator_storagesize: 10Gi
-
-  # Install loki component from grafana operator
-    - name: Deploy loki operator
-      include_role:
-        name: ../roles/deploy/logging
-      vars:
-        storageclass_name: "do-block-storage"
-        loki_storagesize: 10Gi
-
-    - name: Deploy certmanager
-      include_role:
-        name: ../roles/deploy/cert-manager
-
-  # Install loki component from grafana operator
-    - name: Deploy minio
-      include_role:
-        name: ../roles/deploy/minio
-      vars:
-        storageclass_name: "do-block-storage"
-        loki_storagesize: 10Gi
+  roles:
+    - role: ../roles/deploy/cert-manager
+    - role: ../roles/deploy/monitoring
+    - role: ../roles/deploy/logging
