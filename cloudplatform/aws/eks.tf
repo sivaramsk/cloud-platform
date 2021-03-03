@@ -29,7 +29,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
 
 resource "aws_eks_cluster" "aws_eks" {
 
-  count = var.totalClusters
+  count = var.totalClusters       //MULTIPLE CLUSTER RESOURCES ARE CREATED
   name     = "eks_cluster_test-${count.index}"
   role_arn = aws_iam_role.eks_cluster.arn
 
@@ -77,7 +77,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
 }
 
 resource "aws_eks_node_group" "node" {
-  count = var.totalClusters
+  count = var.totalClusters               // EACH CLUSTER SHOULD HAVE NODE-GROUPS . AND NODEGROUP IS INCREMENTED
   cluster_name    = aws_eks_cluster.aws_eks[count.index].name
   node_group_name = "node_group-${count.index}"
   node_role_arn   = aws_iam_role.eks_nodes.arn
