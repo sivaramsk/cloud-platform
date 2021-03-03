@@ -28,15 +28,17 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
 }
 
 resource "aws_eks_cluster" "aws_eks" {
-  name     = "eks_cluster_test"
+
+  count = 2
+  name     = "eks_cluster_test-${count.index}"
   role_arn = aws_iam_role.eks_cluster.arn
 
   vpc_config {
-    subnet_ids = ["subnet-28721652", "subnet-59456b31"]
+    subnet_ids = ["subnet-28721652", "subnet-59456b31", "subnet-bc68a4f0"]
   }
 
   tags = {
-    Name = "EKS_test"
+    Name = "Cluster ${count.index}"
   }
 }
 
@@ -75,10 +77,11 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
 }
 
 resource "aws_eks_node_group" "node" {
-  cluster_name    = aws_eks_cluster.aws_eks.name
+  count = 2
+  cluster_name    = aws_eks_cluster.aws_eks[count.index].name
   node_group_name = "node_test"
   node_role_arn   = aws_iam_role.eks_nodes.arn
-  subnet_ids      = ["subnet-28721652", "subnet-59456b31"]
+  subnet_ids      = ["subnet-28721652", "subnet-59456b31", "subnet-bc68a4f0"]
 
   scaling_config {
     desired_size = 3
