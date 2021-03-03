@@ -79,7 +79,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
 resource "aws_eks_node_group" "node" {
   count = var.totalClusters
   cluster_name    = aws_eks_cluster.aws_eks[count.index].name
-  node_group_name = "node_test"
+  node_group_name = "node_group-${count.index}"
   node_role_arn   = aws_iam_role.eks_nodes.arn
   subnet_ids      = ["subnet-28721652", "subnet-59456b31", "subnet-bc68a4f0"]
 
