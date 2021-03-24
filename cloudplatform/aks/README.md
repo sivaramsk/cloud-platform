@@ -4,6 +4,7 @@
 1. Azure account with the contributor role
 2. Terraform 0.12 (https://www.terraform.io/downloads.html)
 3. az (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+4. Access to the repo git@github.com:sivaramkannan/BAF-intain-deployment-configs.git
 
 This would launch an AKS cluster along with 50G of filestore. 
 
@@ -11,8 +12,13 @@ This would launch an AKS cluster along with 50G of filestore.
 
 *Checkout the repo:*
 git clone https://github.com/sivaramkannan/azure-aks.git
+git clone git@github.com:sivaramkannan/BAF-intain-deployment-configs.git
 
 Configure terraform:
+
+  1. If it is a new deployment, create a new folder under BAF-intain-deployment-configs or use the existing folder if the deployment already exists.
+  2. Copy the contents of the folder aks under azure-aks to the above folder.
+
   The default number of nodes that will be installed is 3 worker nodes with 4vCPUS and 16G RAM. Refer this page for configuring different machine type - https://azure.microsoft.com/en-in/pricing/details/virtual-machines/linux/. You can change the configuration in the file aks-cluster.tf under agent_pool_profile.count. 
   You can also change the configuration for the file store size in file-store.tf where the quota is set to 50G. You may have to modify the name of the storageaccount and the sharename if already using the default one. 
   
