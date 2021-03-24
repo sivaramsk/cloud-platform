@@ -72,7 +72,7 @@ location = "West US 2"
 storage_account_name = "umbstorageaccount"
 
 # Blobstore configuration
-blobstore_name = "umb-staging-cni"
+blobstore_name = "umb-staging-cni-backup"
 
 # Azure AKS configuration
 cluster_name = "umb-staging-cni"
