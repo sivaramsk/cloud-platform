@@ -35,8 +35,8 @@ Create Blob store for remote Statefile:
 Configure the variables wth the credentials:
 * Login to the azure portal and note down the subscription id and tenant id of your login. 
 * export the below two variables in your environment
-** export TF_VAR_subscription_id=<subscription_id>
-** export TF_VAR_tenant_id=<tenant_id>
+  * export TF_VAR_subscription_id=<subscription_id>
+  * export TF_VAR_tenant_id=<tenant_id>
 
 Sample Variable configuration: 
 ```
