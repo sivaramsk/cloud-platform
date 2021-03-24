@@ -33,19 +33,57 @@ Create Blob store for remote Statefile:
 3. Mark the name of the new container created for subsequent usage.
 
 Configure the variables wth the credentials:
-1. Run the command `az ad sp create-for-rbac --skip-assignment`
+* Login to the azure portal and note down the subscription id and tenant id of your login. 
+* export the below two variables in your environment
+** export TF_VAR_subscription_id=<subscription_id>
+** export TF_VAR_tenant_id=<tenant_id>
+
+Sample Variable configuration: 
 ```
-$ az ad sp create-for-rbac --skip-assignment
-{
-  "appId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
-  "displayName": "azure-cli-2019-04-11-00-46-05",
-  "name": "http://azure-cli-2019-04-11-00-46-05",
-  "password": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
-  "tenant": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
-}
+ # Resource Group
+resource_group = "<resource_group_name>"
+location = "<resource_region>"
+
+# Storage Account Name"
+storage_account_name = "<storage_account_name>"
+
+# Blobstore configuration
+blobstore_name = "<backup_blob_container_name>"
+
+# Azure AKS configuration
+cluster_name = "<aks_cluster_name>"
+cluster_nodepool_name = "<aks_nodepool_name>"
+cluster_vmsize = "<aks_workernode_machine_type>"
+cluster_nodepool_size = <number_of_worker_nodes>
+
+#Vault VM Configuration
+prefix = "<vault_vm_prefix>"
+vault_vmsize = "<vault_vm_machine_type>"
+
 ```
 
-3. Configure the appId and password from above in the terraform.tfvars
+Example Configuration:
+```
+# Resource Group
+resource_group = "umb-rg"
+location = "West US 2"
+
+# Storage Account Name" 
+storage_account_name = "umbstorageaccount"
+
+# Blobstore configuration
+blobstore_name = "umb-staging-cni"
+
+# Azure AKS configuration
+cluster_name = "umb-staging-cni"
+cluster_nodepool_name = "nodepool1"
+cluster_vmsize = "Standard_D4a_v4"
+cluster_nodepool_size = 3
+
+#Vault VM Configuration
+prefix = "umb-vault"
+vault_vmsize = "Standard_DS1_v2"
+```
 
 Launch the cluster:
 * `terraform init` - If you are running terraform for the first time
