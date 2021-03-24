@@ -21,6 +21,11 @@ Login to Azure:
 2. Execure `az login` from your command line. 
 3. Follow the instructions to autheticate your command line. 
 
+Create Blob store for remote Statefile:
+1. Go the storage account that would be used for this cluster creation.
+2. Create a new container storage (blob store).
+3. Mark the name of the new container created for subsequent usage.
+
 Configure the variables wth the credentials:
 1. Run the command `az ad sp create-for-rbac --skip-assignment`
 ```
