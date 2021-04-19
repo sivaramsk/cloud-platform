@@ -6,8 +6,8 @@
 ---
 monitoring:
   smtp_endpoint:
-  smtp_email: "demo_emulya@intainft.com"
-  smtp_email_password: "welcome@12"
+  smtp_email: "<email_id>"
+  smtp_email_password: "<email_id_password>"
 
   storageclass_name: "default"
   storagesize: "10G"
