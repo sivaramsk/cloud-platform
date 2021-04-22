@@ -1,5 +1,6 @@
 * Checkout the project 
-** git clone git@github.com:sivaramkannan/blockchain-platform.git
+
+* git clone git@github.com:sivaramkannan/blockchain-platform.git
 * cd blockchain-platform/ansible/playbooks
 * Create a new file called params.yaml withe the below contents
 ```
