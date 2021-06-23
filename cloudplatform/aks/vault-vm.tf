@@ -119,6 +119,18 @@ resource "azurerm_linux_virtual_machine" "main" {
     caching           = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
+
+  provisioner "local-exec" {
+    command = <<-EOF
+                echo [all] > inventory
+                echo ${azurerm_public_ip.default.fqdn} >> inventory
+        EOF
+  }
+
+  provisioner "local-exec" {
+    command = "ansible-playbook -u vaultadmin --private-key ${var.private_key}  -T 300 deploy-vault-playbook.yaml"
+  }
+
 }
 
 resource "azurerm_managed_disk" "default" {
@@ -136,3 +148,4 @@ resource "azurerm_virtual_machine_data_disk_attachment" "default" {
   lun                = "10"
   caching            = "ReadWrite"
 }
+
