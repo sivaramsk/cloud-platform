@@ -7,7 +7,7 @@ Prerequisites:
 
 Deployment:
 
-Checkout the repo: https://github.com/sivaramkannan/blockchain-platform.git
+Checkout the repo: https://github.com/sivaramsk/cloud-platform.git
 
 Configure terraform: The default number of nodes that will be installed is 3 worker nodes with t3.medium as instance type. You can modify the cluster name, scaling size, region as per your requirement in the file eks.tf
 
