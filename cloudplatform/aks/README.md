@@ -10,9 +10,8 @@ This would launch an AKS cluster along with 50G of filestore.
 
 *Deployment:*
 
-*Checkout the repo:*
-git clone https://github.com/sivaramkannan/azure-aks.git
-git clone git@github.com:sivaramkannan/BAF-intain-deployment-configs.git
+*Checkout this repo*
+
 
 Configure terraform:
 
@@ -65,17 +64,17 @@ vault_vmsize = "<vault_vm_machine_type>"
 Example Configuration:
 ```
 # Resource Group
-resource_group = "umb-rg"
+resource_group = "<resource-group-name>"
 location = "West US 2"
 
 # Storage Account Name" 
-storage_account_name = "umbstorageaccount"
+storage_account_name = "<stroage-account-name>"
 
 # Blobstore configuration
-blobstore_name = "umb-staging-cni-backup"
+blobstore_name = "<blobstore-name>"
 
 # Azure AKS configuration
-cluster_name = "umb-staging-cni"
+cluster_name = "<cluster-name>"
 cluster_nodepool_name = "nodepool1"
 cluster_vmsize = "Standard_D4a_v4"
 cluster_nodepool_size = 3
