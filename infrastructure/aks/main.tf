@@ -16,10 +16,10 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name  = "umb-rg"
-    storage_account_name = "umbsa"
-    container_name       = "umb-staging-blobstore"
-    key                  = "umb-staging"
+    resource_group_name  = "test-rg"
+    storage_account_name = "testsa"
+    container_name       = "test-staging-blobstore"
+    key                  = "test-staging"
   }
 }
 
@@ -54,7 +54,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   tags = {
-    environment = "umb-staging"
+    environment = "test-staging"
   }
 }
 
